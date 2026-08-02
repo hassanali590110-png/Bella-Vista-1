@@ -1,12 +1,12 @@
 /* ==================================================
    BELLA VISTA RESTAURANT
    COMPLETE RESPONSIVE CSS
-================================================== */
+   ================================================== */
 
 
 /* ==================================================
    1. RESET & GLOBAL STYLES
-================================================== */
+   ================================================== */
 
 * {
     margin: 0;
@@ -20,7 +20,7 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     background: #ffffff;
     color: #222222;
@@ -34,7 +34,8 @@ a {
 
 button,
 input,
-select {
+select,
+textarea {
     font: inherit;
 }
 
@@ -50,7 +51,7 @@ img {
 
 /* ==================================================
    2. NAVBAR
-================================================== */
+   ================================================== */
 
 .navbar {
     width: 100%;
@@ -63,12 +64,17 @@ img {
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    color: #d4a017;
+}
+
+.logo span {
     color: #ffffff;
 }
 
@@ -82,14 +88,16 @@ img {
     position: relative;
     font-size: 15px;
     font-weight: 600;
+    color: #ffffff;
     transition: color 0.3s ease;
+    padding: 5px 0;
 }
 
 .nav-links a::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -6px;
+    bottom: -4px;
     width: 0;
     height: 2px;
     background: #d4a017;
@@ -104,19 +112,33 @@ img {
     width: 100%;
 }
 
+.nav-links a.active-link {
+    color: #d4a017;
+}
+
+.nav-links a.active-link::after {
+    width: 100%;
+}
+
 .menu-toggle {
     display: none;
     border: none;
     background: transparent;
     color: #ffffff;
-    font-size: 28px;
+    font-size: 30px;
     line-height: 1;
+    padding: 5px 10px;
+    transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+    transform: scale(1.1);
 }
 
 
 /* ==================================================
    3. HERO SECTION
-================================================== */
+   ================================================== */
 
 .hero {
     min-height: 90vh;
@@ -125,26 +147,39 @@ img {
     justify-content: center;
     text-align: center;
     padding: 80px 8%;
-
     background:
-        linear-gradient(rgba(0, 0, 0, 0.65),
-            rgba(0, 0, 0, 0.65)),
+        linear-gradient(rgba(0, 0, 0, 0.70),
+            rgba(0, 0, 0, 0.70)),
         url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1600&q=80") center / cover no-repeat;
-
     color: #ffffff;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+    pointer-events: none;
 }
 
 .hero-content {
     width: 100%;
     max-width: 800px;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-subtitle {
     color: #d4a017;
     font-size: 14px;
     font-weight: 700;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     margin-bottom: 15px;
+    text-transform: uppercase;
 }
 
 .hero h1 {
@@ -161,8 +196,9 @@ img {
 .hero p:not(.hero-subtitle) {
     max-width: 650px;
     margin: 0 auto 30px;
-    font-size: 17px;
+    font-size: 18px;
     color: #eeeeee;
+    line-height: 1.8;
 }
 
 .hero-buttons {
@@ -175,30 +211,29 @@ img {
 
 /* ==================================================
    4. BUTTONS
-================================================== */
+   ================================================== */
 
 .btn {
     display: inline-block;
-    padding: 13px 26px;
+    padding: 14px 32px;
     background: #d4a017;
     color: #111111;
     border: 2px solid #d4a017;
-    border-radius: 5px;
+    border-radius: 50px;
     font-weight: 700;
+    font-size: 15px;
     text-align: center;
     cursor: pointer;
-    transition:
-        background 0.3s ease,
-        color 0.3s ease,
-        border-color 0.3s ease,
-        transform 0.3s ease;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
 }
 
 .btn:hover {
     background: #ffffff;
     border-color: #ffffff;
     color: #111111;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212, 160, 23, 0.3);
 }
 
 .btn-outline {
@@ -211,12 +246,25 @@ img {
     background: #ffffff;
     color: #111111;
     border-color: #ffffff;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+.btn-gold {
+    background: #d4a017;
+    color: #111111;
+    border-color: #d4a017;
+}
+
+.btn-gold:hover {
+    background: #e8b82a;
+    border-color: #e8b82a;
+    color: #111111;
 }
 
 
 /* ==================================================
    5. COMMON SECTION
-================================================== */
+   ================================================== */
 
 section {
     padding: 90px 8%;
@@ -232,8 +280,9 @@ section {
     color: #d4a017;
     font-size: 13px;
     font-weight: 700;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     margin-bottom: 10px;
+    text-transform: uppercase;
 }
 
 .section-title h2 {
@@ -242,13 +291,22 @@ section {
     color: #111111;
 }
 
+.section-title .underline {
+    width: 60px;
+    height: 3px;
+    background: #d4a017;
+    margin: 15px auto 0;
+    border-radius: 10px;
+}
+
 
 /* ==================================================
    6. ABOUT SECTION
-================================================== */
+   ================================================== */
 
 .about {
     background: #ffffff;
+    padding: 90px 8%;
 }
 
 .about-content {
@@ -261,6 +319,7 @@ section {
     margin-bottom: 18px;
     color: #666666;
     font-size: 17px;
+    line-height: 1.8;
 }
 
 .about-content p:last-child {
@@ -270,10 +329,11 @@ section {
 
 /* ==================================================
    7. SPECIAL OFFERS
-================================================== */
+   ================================================== */
 
 .offers {
-    background: #f7f7f7;
+    background: #f8f6f0;
+    padding: 90px 8%;
 }
 
 .offer-container {
@@ -286,50 +346,72 @@ section {
 
 .offer-card {
     background: #ffffff;
-    padding: 35px 30px;
-    border-radius: 10px;
+    padding: 40px 30px;
+    border-radius: 15px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.offer-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #d4a017, #f0c850);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.offer-card:hover::before {
+    transform: scaleX(1);
 }
 
 .offer-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
 }
 
 .offer-badge {
     display: inline-block;
-    padding: 6px 12px;
+    padding: 6px 16px;
     margin-bottom: 15px;
     background: #111111;
     color: #ffffff;
     border-radius: 30px;
     font-size: 12px;
     font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .offer-card h3 {
     margin-bottom: 12px;
     font-size: 24px;
+    color: #111111;
 }
 
 .offer-card p {
     color: #666666;
     margin-bottom: 22px;
+    line-height: 1.6;
 }
 
 
 /* ==================================================
    8. MENU SECTION
-================================================== */
+   ================================================== */
 
 .menu {
     background: #ffffff;
+    padding: 90px 8%;
 }
 
 .menu-container {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -337,24 +419,36 @@ section {
 }
 
 .menu-category {
-    padding: 30px;
+    padding: 30px 25px;
     border: 1px solid #eeeeee;
-    border-radius: 10px;
+    border-radius: 15px;
     background: #ffffff;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .menu-category:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+    border-color: #d4a017;
 }
 
 .menu-category>h3 {
     color: #d4a017;
-    font-size: 25px;
+    font-size: 24px;
     margin-bottom: 20px;
     padding-bottom: 12px;
     border-bottom: 2px solid #eeeeee;
+    position: relative;
+}
+
+.menu-category>h3::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #d4a017;
 }
 
 .menu-item {
@@ -363,7 +457,7 @@ section {
     align-items: flex-start;
     gap: 20px;
     padding: 18px 0;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .menu-item:last-child {
@@ -375,27 +469,32 @@ section {
     font-size: 17px;
     margin-bottom: 5px;
     color: #222222;
+    font-weight: 600;
 }
 
 .menu-item p {
     color: #777777;
     font-size: 14px;
+    line-height: 1.5;
 }
 
 .menu-item span {
     white-space: nowrap;
     color: #d4a017;
     font-weight: 700;
+    font-size: 17px;
+    padding-top: 2px;
 }
 
 
 /* ==================================================
    9. POPULAR DISHES
-================================================== */
+   ================================================== */
 
 .popular {
     background: #111111;
     color: #ffffff;
+    padding: 90px 8%;
 }
 
 .popular .section-title h2 {
@@ -411,45 +510,59 @@ section {
 }
 
 .popular-card {
-    background: #1c1c1c;
-    padding: 30px;
-    border-radius: 10px;
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 15px;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.4s ease;
+    border: 1px solid #2a2a2a;
 }
 
 .popular-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    border-color: #d4a017;
 }
 
-.dish-placeholder {
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.dish-image {
+    width: 100%;
+    height: 220px;
     margin-bottom: 20px;
-    border-radius: 8px;
-    background: #2a2a2a;
-    font-size: 70px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.dish-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.popular-card:hover .dish-image img {
+    transform: scale(1.08);
 }
 
 .popular-card h3 {
     margin-bottom: 8px;
+    font-size: 20px;
 }
 
 .popular-card p {
     color: #d4a017;
     font-weight: 700;
+    font-size: 18px;
 }
 
 
 /* ==================================================
    10. WHY CHOOSE US
-================================================== */
+   ================================================== */
 
 .why-us {
-    background: #1a0b0b;
+    background: #f8f6f0;
+    padding: 90px 8%;
 }
 
 .why-container {
@@ -461,50 +574,58 @@ section {
 }
 
 .why-card {
-    padding: 30px 20px;
+    padding: 35px 25px;
     background: #ffffff;
     text-align: center;
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
 }
 
 .why-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
 }
 
 .why-card span {
     display: block;
-    font-size: 40px;
+    font-size: 45px;
     margin-bottom: 15px;
 }
 
 .why-card h3 {
     margin-bottom: 10px;
+    font-size: 20px;
+    color: #111111;
 }
 
 .why-card p {
     color: #666666;
     font-size: 14px;
+    line-height: 1.6;
 }
 
 
 /* ==================================================
    11. GALLERY
-================================================== */
+   ================================================== */
 
 .gallery {
-    background: #271616;
+    background: #ffffff;
+    padding: 90px 8%;
 }
+
 .gallery-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .gallery-item {
-    height: 250px;
-    border-radius: 10px;
+    height: 260px;
+    border-radius: 12px;
     overflow: hidden;
     position: relative;
     cursor: pointer;
@@ -515,21 +636,45 @@ section {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.5s ease;
+    transition: transform 0.6s ease;
 }
 
 .gallery-item:hover img {
-    transform: scale(1.08);
+    transform: scale(1.1);
 }
 
+.gallery-item::after {
+    content: '🔍';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.gallery-item:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
 
 
 /* ==================================================
    12. REVIEWS
-================================================== */
+   ================================================== */
 
 .reviews {
-    background: #361b1b;
+    background: #111111;
+    color: #ffffff;
+    padding: 90px 8%;
+}
+
+.reviews .section-title h2 {
+    color: #ffffff;
 }
 
 .review-container {
@@ -541,37 +686,48 @@ section {
 }
 
 .review-card {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 10px;
+    background: #1a1a1a;
+    padding: 35px 25px;
+    border-radius: 15px;
     text-align: center;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #2a2a2a;
+    transition: all 0.3s ease;
+}
+
+.review-card:hover {
+    border-color: #d4a017;
+    transform: translateY(-5px);
 }
 
 .stars {
     color: #d4a017;
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 15px;
+    letter-spacing: 3px;
 }
 
 .review-card p {
-    color: #666666;
+    color: #cccccc;
     margin-bottom: 15px;
     font-style: italic;
+    line-height: 1.6;
+    font-size: 15px;
 }
 
 .review-card h4 {
-    color: #111111;
+    color: #d4a017;
+    font-size: 16px;
 }
 
 
 /* ==================================================
    13. BOOKING SECTION
-================================================== */
+   ================================================== */
 
 .booking {
     background: #111111;
     color: #ffffff;
+    padding: 90px 8%;
 }
 
 .booking .section-title h2 {
@@ -589,36 +745,45 @@ section {
 .booking-form input,
 .booking-form select {
     width: 100%;
-    padding: 14px 15px;
-    border: 2px solid transparent;
-    border-radius: 5px;
+    padding: 14px 18px;
+    border: 2px solid #2a2a2a;
+    border-radius: 10px;
     outline: none;
-    background: #ffffff;
-    color: #222222;
-    transition: border-color 0.3s ease;
+    background: #1a1a1a;
+    color: #ffffff;
+    transition: all 0.3s ease;
 }
 
 .booking-form input:focus,
 .booking-form select:focus {
     border-color: #d4a017;
+    background: #222222;
+    box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.1);
 }
 
 .booking-form input::placeholder {
-    color: #777777;
+    color: #888888;
+}
+
+.booking-form select option {
+    background: #1a1a1a;
+    color: #ffffff;
 }
 
 .booking-form .btn {
     grid-column: 1 / -1;
     justify-self: center;
+    min-width: 200px;
 }
 
 
 /* ==================================================
    14. CONTACT SECTION
-================================================== */
+   ================================================== */
 
 .contact {
     background: #ffffff;
+    padding: 90px 8%;
 }
 
 .contact-container {
@@ -640,26 +805,36 @@ section {
     display: flex;
     gap: 18px;
     align-items: flex-start;
+    padding: 15px;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.contact-item:hover {
+    background: #f8f6f0;
 }
 
 .contact-item>span {
-    font-size: 30px;
+    font-size: 32px;
     line-height: 1;
 }
 
 .contact-item h3 {
     margin-bottom: 5px;
+    color: #111111;
 }
 
 .contact-item p {
     color: #666666;
+    line-height: 1.6;
 }
 
 .map-container {
     width: 100%;
     min-height: 350px;
-    border-radius: 10px;
+    border-radius: 15px;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .map-container iframe {
@@ -680,56 +855,334 @@ section {
 
 /* ==================================================
    15. FOOTER
-================================================== */
+   ================================================== */
 
 footer {
     padding: 50px 8% 25px;
-    background: #111111;
+    background: #0a0a0a;
     color: #ffffff;
     text-align: center;
 }
 
 .footer-content h3 {
-    font-size: 25px;
+    font-size: 28px;
     margin-bottom: 8px;
+    color: #d4a017;
 }
 
 .footer-content p {
     color: #bbbbbb;
+    font-size: 15px;
 }
 
 .social-links {
-    margin: 20px 0;
+    margin: 25px 0;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
 }
 
 .social-links a {
     color: #d4a017;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 .social-links a:hover {
     color: #ffffff;
+    background: #d4a017;
 }
 
 .copyright {
     padding-top: 20px;
-    border-top: 1px solid #333333;
+    border-top: 1px solid #222222;
     color: #888888;
     font-size: 13px;
 }
 
 
 /* ==================================================
-   16. RESPONSIVE TABLET
-================================================== */
+   16. DIGITAL MENU PAGE STYLES
+   ================================================== */
+
+.digital-menu-header {
+    padding: 30px 20px;
+    background: #111111;
+    color: #ffffff;
+    text-align: center;
+}
+
+.digital-logo h1 {
+    color: #d4a017;
+    font-size: 36px;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+}
+
+.digital-logo p {
+    color: #cccccc;
+    font-size: 14px;
+    letter-spacing: 3px;
+}
+
+.digital-welcome {
+    padding: 60px 20px 40px;
+    text-align: center;
+    background: #f8f6f0;
+}
+
+.menu-label {
+    color: #d4a017;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.digital-welcome h2 {
+    margin: 10px 0;
+    font-size: 38px;
+    color: #111111;
+}
+
+.digital-welcome p:last-child {
+    color: #666666;
+    font-size: 16px;
+}
+
+.digital-menu {
+    max-width: 800px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.digital-category {
+    margin-bottom: 40px;
+}
+
+.digital-category h2 {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    color: #d4a017;
+    border-bottom: 2px solid #eeeeee;
+    font-size: 28px;
+    position: relative;
+}
+
+.digital-category h2::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: #d4a017;
+}
+
+.digital-menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.digital-menu-item:last-child {
+    border-bottom: none;
+}
+
+.digital-menu-item h3 {
+    margin-bottom: 5px;
+    color: #222222;
+    font-size: 18px;
+}
+
+.digital-menu-item p {
+    color: #777777;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.digital-menu-item strong {
+    color: #d4a017;
+    white-space: nowrap;
+    font-size: 17px;
+    padding-top: 2px;
+}
+
+.digital-order {
+    padding: 70px 20px;
+    text-align: center;
+    background: #111111;
+    color: #ffffff;
+}
+
+.digital-order h2 {
+    margin-bottom: 10px;
+    font-size: 36px;
+}
+
+.digital-order p {
+    color: #cccccc;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.digital-order-btn {
+    display: inline-block;
+    padding: 16px 36px;
+    background: #d4a017;
+    color: #111111;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.digital-order-btn:hover {
+    background: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212, 160, 23, 0.3);
+}
+
+.digital-footer {
+    padding: 40px 20px;
+    text-align: center;
+    background: #0a0a0a;
+    color: #ffffff;
+}
+
+.digital-footer h3 {
+    color: #d4a017;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.digital-footer p {
+    color: #999999;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+
+/* ==================================================
+   17. SCROLL REVEAL ANIMATIONS
+   ================================================== */
+
+.offer-card,
+.menu-category,
+.popular-card,
+.why-card,
+.gallery-item,
+.review-card {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.offer-card.show,
+.menu-category.show,
+.popular-card.show,
+.why-card.show,
+.gallery-item.show,
+.review-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger delay for cards */
+.offer-card:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.offer-card:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.offer-card:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.popular-card:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.popular-card:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.popular-card:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.gallery-item:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.gallery-item:nth-child(2) {
+    transition-delay: 0.05s;
+}
+
+.gallery-item:nth-child(3) {
+    transition-delay: 0.1s;
+}
+
+.gallery-item:nth-child(4) {
+    transition-delay: 0.15s;
+}
+
+.gallery-item:nth-child(5) {
+    transition-delay: 0.2s;
+}
+
+.gallery-item:nth-child(6) {
+    transition-delay: 0.25s;
+}
+
+.review-card:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.review-card:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.review-card:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.why-card:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.why-card:nth-child(2) {
+    transition-delay: 0.05s;
+}
+
+.why-card:nth-child(3) {
+    transition-delay: 0.1s;
+}
+
+.why-card:nth-child(4) {
+    transition-delay: 0.15s;
+}
+
+
+/* ==================================================
+   18. RESPONSIVE - TABLET
+   ================================================== */
 
 @media (max-width: 900px) {
 
     .navbar {
         padding: 18px 5%;
+    }
+
+    section {
+        padding: 70px 5%;
     }
 
     .offer-container,
@@ -756,17 +1209,21 @@ footer {
         max-width: 700px;
         margin: auto;
     }
+
+    .gallery-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 
 /* ==================================================
-   17. RESPONSIVE MOBILE
-================================================== */
+   19. RESPONSIVE - MOBILE
+   ================================================== */
 
 @media (max-width: 700px) {
 
     .navbar {
-        padding: 16px 5%;
+        padding: 14px 5%;
     }
 
     .menu-toggle {
@@ -783,6 +1240,8 @@ footer {
         align-items: center;
         gap: 0;
         background: #111111;
+        padding: 0;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     }
 
     .nav-links.active {
@@ -791,26 +1250,31 @@ footer {
 
     .nav-links a {
         width: 100%;
-        padding: 15px;
+        padding: 16px 20px;
         text-align: center;
-        border-top: 1px solid #333333;
+        border-top: 1px solid #222222;
+        font-size: 16px;
     }
 
     .nav-links a::after {
         display: none;
     }
 
+    .nav-links a:hover {
+        background: #1a1a1a;
+    }
+
     section {
-        padding: 70px 5%;
+        padding: 60px 5%;
     }
 
     .hero {
-        min-height: 85vh;
-        padding: 70px 5%;
+        min-height: 80vh;
+        padding: 60px 5%;
     }
 
     .hero h1 {
-        font-size: 42px;
+        font-size: 38px;
     }
 
     .hero p:not(.hero-subtitle) {
@@ -821,10 +1285,18 @@ footer {
     .menu-container,
     .popular-container,
     .why-container,
-    .gallery-container,
     .review-container,
     .booking-form {
         grid-template-columns: 1fr;
+    }
+
+    .gallery-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .gallery-item {
+        height: 180px;
     }
 
     .menu-item {
@@ -833,11 +1305,12 @@ footer {
     }
 
     .menu-item span {
-        font-size: 15px;
+        font-size: 16px;
     }
 
     .booking-form .btn {
         width: 100%;
+        min-width: auto;
     }
 
     .contact-buttons {
@@ -851,223 +1324,8 @@ footer {
         text-align: center;
     }
 
-    .gallery-item {
-        height: 200px;
-    }
-}
-
-
-/* ==================================================
-   18. SMALL MOBILE
-================================================== */
-
-@media (max-width: 400px) {
-
-    .logo {
-        font-size: 21px;
-    }
-
-    .hero h1 {
-        font-size: 34px;
-    }
-
-    .hero-subtitle {
-        font-size: 12px;
-        letter-spacing: 2px;
-    }
-
-    .section-title h2 {
-        font-size: 30px;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-    }
-
-    .hero-buttons .btn {
-        width: 100%;
-    }
-
-    .offer-card,
-    .menu-category,
-    .popular-card,
-    .review-card {
-        padding: 25px 20px;
-    }
-}
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-.dish-image {
-    width: 100%;
-    height: 220px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.dish-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
-}
-
-.popular-card:hover .dish-image img {
-    transform: scale(1.08);
-}
-/* ==================================================
-   DIGITAL MENU PAGE
-================================================== */
-
-.digital-menu-header {
-    padding: 35px 20px;
-    background: #111111;
-    color: #ffffff;
-    text-align: center;
-}
-
-.digital-logo h1 {
-    color: #d4a017;
-    font-size: 32px;
-    margin-bottom: 5px;
-}
-
-.digital-logo p {
-    color: #cccccc;
-    margin: 0;
-}
-
-.digital-welcome {
-    padding: 60px 20px 30px;
-    text-align: center;
-}
-
-.menu-label {
-    color: #d4a017;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 3px;
-}
-
-.digital-welcome h2 {
-    margin: 10px 0;
-    font-size: 38px;
-    color: #111111;
-}
-
-.digital-welcome p:last-child {
-    color: #666666;
-}
-
-.digital-menu {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-}
-
-.digital-category {
-    margin-bottom: 35px;
-}
-
-.digital-category h2 {
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    color: #d4a017;
-    border-bottom: 2px solid #eeeeee;
-}
-
-.digital-menu-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 20px;
-    padding: 20px 0;
-    border-bottom: 1px solid #eeeeee;
-}
-
-.digital-menu-item h3 {
-    margin-bottom: 5px;
-    color: #222222;
-}
-
-.digital-menu-item p {
-    color: #777777;
-    font-size: 14px;
-}
-
-.digital-menu-item strong {
-    color: #d4a017;
-    white-space: nowrap;
-}
-
-.digital-order {
-    padding: 60px 20px;
-    text-align: center;
-    background: #111111;
-    color: #ffffff;
-}
-
-.digital-order h2 {
-    margin-bottom: 10px;
-}
-
-.digital-order p {
-    color: #cccccc;
-    margin-bottom: 25px;
-}
-
-.digital-order-btn {
-    display: inline-block;
-    padding: 14px 28px;
-    background: #d4a017;
-    color: #111111;
-    border-radius: 5px;
-    font-weight: 700;
-    transition: 0.3s ease;
-}
-
-.digital-order-btn:hover {
-    background: #ffffff;
-    transform: translateY(-2px);
-}
-
-.digital-footer {
-    padding: 35px 20px;
-    text-align: center;
-    background: #080808;
-    color: #ffffff;
-}
-
-.digital-footer h3 {
-    margin-bottom: 10px;
-}
-
-.digital-footer p {
-    margin-top: 8px;
-    color: #999999;
-    font-size: 14px;
-}
-
-
-/* MOBILE */
-
-@media (max-width: 600px) {
-
-    .digital-welcome {
-        padding: 45px 20px 20px;
-    }
-
     .digital-welcome h2 {
         font-size: 30px;
-    }
-
-    .digital-menu {
-        padding: 20px;
     }
 
     .digital-menu-item {
@@ -1084,4 +1342,145 @@ footer {
         max-width: 300px;
     }
 
+    .digital-order h2 {
+        font-size: 28px;
+    }
+}
+
+
+/* ==================================================
+   20. RESPONSIVE - SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 400px) {
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero-subtitle {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .section-title h2 {
+        font-size: 26px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .offer-card,
+    .menu-category,
+    .popular-card,
+    .review-card {
+        padding: 25px 18px;
+    }
+
+    .gallery-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .gallery-item {
+        height: 140px;
+    }
+
+    .digital-welcome h2 {
+        font-size: 26px;
+    }
+
+    .digital-category h2 {
+        font-size: 22px;
+    }
+
+    .digital-menu-item h3 {
+        font-size: 16px;
+    }
+
+    .btn {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+}
+
+
+/* ==================================================
+   21. SCROLLBAR STYLING
+   ================================================== */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111111;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d4a017;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #e8b82a;
+}
+
+
+/* ==================================================
+   22. SELECTION COLOR
+   ================================================== */
+
+::selection {
+    background: #d4a017;
+    color: #111111;
+}
+
+
+/* ==================================================
+   23. LOADING ANIMATION (Optional)
+   ================================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content {
+    animation: fadeInUp 1s ease forwards;
+}
+
+.btn {
+    animation: fadeInUp 1s ease 0.3s forwards;
+    opacity: 0;
+}
+
+.hero-buttons .btn:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.hero-buttons .btn:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.hero-buttons .btn:nth-child(3) {
+    animation-delay: 0.7s;
 }
